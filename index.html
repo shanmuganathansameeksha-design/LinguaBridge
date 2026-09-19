@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaBridge — Language Translator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="card">
+        <header class="brand">
+            <h1>Lingua<span class="brand-accent">Bridge</span></h1>
+            <p class="tagline">English · தமிழ் · हिन्दी · Français · Deutsch</p>
+        </header>
+
+        <section class="lang-row">
+            <div class="lang-field">
+                <label for="sourceLanguage">From</label>
+                <select id="sourceLanguage">
+                    <option value="en" selected>English</option>
+                    <option value="ta">Tamil</option>
+                    <option value="hi">Hindi</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                </select>
+            </div>
+
+            <div class="bridge-mark" aria-hidden="true">⇄</div>
+
+            <div class="lang-field">
+                <label for="targetLanguage">To</label>
+                <select id="targetLanguage">
+                    <option value="en">English</option>
+                    <option value="ta" selected>Tamil</option>
+                    <option value="hi">Hindi</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="io-block">
+            <label for="inputText">Text to translate</label>
+            <textarea id="inputText" rows="4" spellcheck="false"
+                placeholder="Type here… e.g. hello"></textarea>
+        </section>
+
+        <button id="translateButton" type="button">Translate</button>
+
+        <section class="io-block">
+            <p class="field-label">Translation</p>
+            <div id="outputText" class="output idle" aria-live="polite">Your translation will appear here.</div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

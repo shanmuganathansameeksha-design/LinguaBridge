@@ -1,0 +1,214 @@
+/* LinguaBridge v1.10 — petrol ink, marigold result, script-friendly type */
+
+:root {
+    --bg: #EAF0F4;
+    --card: #FCFDFE;
+    --ink: #16303F;
+    --ink-soft: #5C7382;
+    --line: #D4DEE5;
+    --teal: #0F7C8C;
+    --teal-deep: #0A5A66;
+    --marigold: #E39B18;
+    --error: #B23A2E;
+    --font-ui: "Segoe UI", "Noto Sans", Roboto, Arial, sans-serif;
+    /* Nirmala UI / Latha / Mangal carry Tamil and Devanagari on Windows */
+    --font-script: "Segoe UI", "Nirmala UI", "Noto Sans Tamil", "Noto Sans Devanagari",
+                   "Latha", "Mangal", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: var(--bg);
+    background-image: linear-gradient(160deg, #EAF0F4 0%, #DDE8EE 100%);
+    color: var(--ink);
+    font-family: var(--font-ui);
+}
+
+.card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 34px 34px 30px;
+    box-shadow: 0 18px 45px rgba(22, 48, 63, 0.14);
+}
+
+/* Brand */
+
+.brand h1 {
+    font-size: 2.1rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+}
+
+.brand-accent {
+    color: var(--teal);
+}
+
+.tagline {
+    margin-top: 6px;
+    font-family: var(--font-script);
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+}
+
+/* Language row */
+
+.lang-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.lang-field {
+    flex: 1;
+}
+
+.bridge-mark {
+    padding-bottom: 9px;
+    font-size: 1.25rem;
+    color: var(--marigold);
+    user-select: none;
+}
+
+label,
+.field-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    font-weight: 650;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+}
+
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+/* Input / output */
+
+.io-block {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: var(--font-script);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    resize: vertical;
+}
+
+textarea::placeholder {
+    color: #9AAEBB;
+}
+
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: var(--teal);
+    color: #FFFFFF;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.08s ease;
+}
+
+button:hover:enabled {
+    background: var(--teal-deep);
+}
+
+button:active:enabled {
+    transform: translateY(1px);
+}
+
+button:disabled {
+    background: #8FB6BD;
+    cursor: wait;
+}
+
+.output {
+    min-height: 64px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--marigold);
+    border-radius: 8px;
+    background: #FDF9F0;
+    font-family: var(--font-script);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.output.idle {
+    border-left-color: var(--line);
+    background: #F5F8FA;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+}
+
+.output.error {
+    border-left-color: var(--error);
+    background: #FBF1EF;
+    color: var(--error);
+    font-size: 0.95rem;
+}
+
+.output.result {
+    animation: settle 0.25s ease;
+}
+
+@keyframes settle {
+    from { opacity: 0; transform: translateY(3px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .output.result { animation: none; }
+    button { transition: none; }
+}
+
+@media (max-width: 440px) {
+    .card { padding: 24px 20px; }
+    .lang-row { flex-direction: column; align-items: stretch; gap: 10px; }
+    .bridge-mark { display: none; }
+}
